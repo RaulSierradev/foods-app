@@ -12,8 +12,10 @@ import {
 } from "./actions.type";
 import axios from "axios";
 
+const host = "http://localhost:3001";
+
 export const addRecipe = (recipe) => {
-  const endpoint = "http://localhost:3001/recipes";
+  const endpoint = `${host}/recipes`;
   return async (dispatch) => {
     try {
       const { data } = await axios.post(endpoint, recipe);
@@ -28,7 +30,7 @@ export const addRecipe = (recipe) => {
 };
 
 export const getDiets = () => {
-  const endpoint = "http://localhost:3001/diets";
+  const endpoint = `${host}/diets`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -43,7 +45,7 @@ export const getDiets = () => {
 };
 
 export const getRecipes = () => {
-  const endpoint = "http://localhost:3001/recipes";
+  const endpoint = `${host}/recipes`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -78,14 +80,14 @@ export const filterbyOrigin = (origin) => {
   };
 };
 
-export const awaitBy = ()=>{
-  return{
-    type: AWAIT_BY
-  }
-}
+export const awaitBy = () => {
+  return {
+    type: AWAIT_BY,
+  };
+};
 
-export const getRecipesByiD = (id)=>{
-  const endpoint = `http://localhost:3001/recipes/${id}`;
+export const getRecipesByiD = (id) => {
+  const endpoint = `${host}/recipes/${id}`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -94,14 +96,14 @@ export const getRecipesByiD = (id)=>{
         payload: data,
       });
     } catch (error) {
-      return({error: `There is no recipe with this id: "${id}"`});
+      return { error: `There is no recipe with this id: "${id}"` };
     }
   };
-}
+};
 
 export const searchByName = (name) => {
   return async (dispatch) => {
-    const endpoint = `http://localhost:3001/recipes?name=${name}`;
+    const endpoint = `${host}/recipes?name=${name}`;
     try {
       const { data } = await axios(endpoint);
       dispatch(nameSuccess(data));

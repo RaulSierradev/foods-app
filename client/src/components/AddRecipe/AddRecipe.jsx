@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as actions from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import addRecipeValidation from "./AddRecipeValidation";
 import "./AddRecipe.css";
 
 export default function AddRecipe() {
   const formRef = useRef(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const allDiets = useSelector((state) => state.typeDiets);
   const [errors, setErrors] = useState({});
   const [nameIngredient, setNameIngredient] = useState("");
@@ -81,6 +82,7 @@ export default function AddRecipe() {
         numInstr: 0,
       });
       formRef.current.reset();
+      navigate('/home')
     } else {
       alert("You must fill in all the fields");
     }

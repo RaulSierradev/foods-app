@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       food_summary: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       health_score: {
