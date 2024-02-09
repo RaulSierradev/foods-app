@@ -8,7 +8,7 @@ import "./AddRecipe.css";
 export default function AddRecipe() {
   const formRef = useRef(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const allDiets = useSelector((state) => state.typeDiets);
   const [errors, setErrors] = useState({});
   const [nameIngredient, setNameIngredient] = useState("");
@@ -82,7 +82,7 @@ export default function AddRecipe() {
         numInstr: 0,
       });
       formRef.current.reset();
-      navigate('/home')
+      navigate("/home");
     } else {
       alert("You must fill in all the fields");
     }
