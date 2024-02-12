@@ -36,12 +36,14 @@ export default function AddRecipe() {
       [e.target.name]: e.target.value,
     });
 
-    setErrors(
-      addRecipeValidation({
-        ...recipe,
-        [e.target.name]: e.target.value,
-      })
-    );
+    if (Object.keys(errors).length) {
+      setErrors(
+        addRecipeValidation({
+          ...recipe,
+          [e.target.name]: e.target.value,
+        })
+      );
+    }
   }
 
   function changeHandler(e) {
