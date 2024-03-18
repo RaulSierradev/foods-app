@@ -4,7 +4,7 @@ async function getRecipeById(req, res) {
   try {
     const { id } = req.params;
     const recipe = await getIdRecipe(id);
-
+    console.log(recipe)
     return recipe
       ? res.status(200).json(recipe)
       : res.status(400).json({error: `Id not found`});

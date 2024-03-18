@@ -28,6 +28,8 @@ export default function Detail() {
     return str.replace(/\s/g, "");
   }
 
+  console.log('Esta es la receta', recipeDetail)
+
   return (
     <div className="detail">
       <div>
@@ -46,9 +48,9 @@ export default function Detail() {
           </div>
           <div>
             {recipeDetail.diets &&
-              recipeDetail.diets.map((i) => {
+              recipeDetail.diets.map((i, index) => {
                 return (
-                  <p className={`${removerCharDiets(i.name)}Detail generalDiet`}>
+                  <p key={index} className={`${removerCharDiets(i.name)}Detail generalDiet`}>
                     {i.name}
                   </p>
                 );
@@ -63,9 +65,9 @@ export default function Detail() {
           <h2 className="ingredients">Ingredients: </h2>
           <ul>
             {recipeDetail.ingredients &&
-              recipeDetail.ingredients.map((i) => {
+              recipeDetail.ingredients.map((i, index) => {
                 return (
-                  <li className="ingredientsDetail">{`${i.name} (${Math.ceil(
+                  <li key={index} className="ingredientsDetail">{`${i.name} (${Math.ceil(
                     i.amount
                   )} ${i.unitShort ? i.unitShort : "units"})`}</li>
                 );
@@ -75,9 +77,9 @@ export default function Detail() {
         <div>
           <h2>Instructions</h2>
           {recipeDetail.instructions &&
-            recipeDetail.instructions.map((step) => {
+            recipeDetail.instructions.map((step, index) => {
               return (
-                <div className="instructionDetail">
+                <div key={index} className="instructionDetail">
                   <p>
                     <span className="instructionNumber">{step.number}</span> -{" "}
                     {step.step}
