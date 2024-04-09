@@ -6,7 +6,8 @@ async function getInfoDietDb() {
   });
 
   const dietsAllArray = [];
-  AllDiets.forEach((element) => dietsAllArray.push({ name: element.name, id: element.id })
+  AllDiets.forEach((element) =>
+    dietsAllArray.push({ name: element.name, id: element.id })
   );
 
   return dietsAllArray;

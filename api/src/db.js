@@ -4,11 +4,10 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-
 const sequelize = new Sequelize(
   // URL
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-  {  logging: false, native: false }
+  { logging: false, native: false }
 );
 const basename = path.basename(__filename);
 
@@ -39,8 +38,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Diet, Recipe } = sequelize.models;
 
 // Aca vendrian las relaciones
-Diet.belongsToMany(Recipe, { through: "diet_recipe" , timestamps: false });
-Recipe.belongsToMany(Diet, { through: "diet_recipe" , timestamps: false });
+Diet.belongsToMany(Recipe, { through: "diet_recipe", timestamps: false });
+Recipe.belongsToMany(Diet, { through: "diet_recipe", timestamps: false });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
