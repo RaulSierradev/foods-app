@@ -25,12 +25,6 @@ async function getAllRecipesApi() {
           unitShort: e.measures.metric.unitShort,
         };
       }),
-      instructions: recipe.analyzedInstructions[0]?.steps.map((step) => {
-        return {
-          number: step.number,
-          step: step.step,
-        };
-      }),
       diets: recipe.diets.map((d) => {
         return { name: d };
       }),

@@ -11,7 +11,7 @@ export default function Order() {
   return (
     <div className="order">
       <span className="titleOrder">Order by: </span>
-      <select classname="selectOrder" onChange={(e) => handleOrder(e)}>
+      <select className="selectOrder" onChange={(e) => handleOrder(e)}>
         <option defaultValue>Select...</option>
         <option value="asc">Name ↑</option>
         <option value="des">Name ↓</option>
